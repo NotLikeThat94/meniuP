@@ -95,6 +95,8 @@
 
   /* ---- coloane ---- */
   .two{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));column-gap:56px;flex:1;padding-top:16px;}
+  /* coloana din dreapta e mai scurtă: distribuie spațiul liber egal între produse */
+  .two .col:last-child .item{margin-bottom:auto;}
   .three{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));column-gap:30px;flex:1;padding-top:12px;}
   .col{display:flex;flex-direction:column;}
 
