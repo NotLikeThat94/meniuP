@@ -90,8 +90,8 @@
   .sec .hgram{font-family:"EB Garamond",serif;font-weight:500;font-size:15px;color:var(--gold);letter-spacing:.02em;text-transform:none;}
   .diamond{text-align:center;color:var(--gold);font-size:10px;line-height:1;margin:6px 0 14px;}
 
-  .sec.sm .ln{width:44px;}
-  .sec.sm h2{font-size:21px;}
+  .sec.sm .ln{width:50px;}
+  .sec.sm h2{font-size:23px;}
 
   /* ---- coloane ---- */
   .two{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));column-gap:56px;flex:1;padding-top:16px;}
@@ -153,17 +153,20 @@
 
   /* ---- pagina densa: 2 coloane cu mai multe sub-sectiuni ---- */
   .stack{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));column-gap:56px;flex:1;padding-top:10px;}
-  .stack .col{display:flex;flex-direction:column;}
-  .subsec{margin-bottom:14px;}
-  .subsec:last-child{margin-bottom:0;}
+  .stack .col{display:flex;flex-direction:column;justify-content:space-between;}
+  .subsec{margin-bottom:0;}
   .stack .sec{margin-top:0;}
-  .stack .item{margin-bottom:8px;}
-  .stack .item-name{font-size:13.5px;}
-  .stack .desc{font-size:12px;max-width:48ch;margin-top:2px;}
-  .stack .line{margin-bottom:4px;}
-  .stack .line .item-name{font-size:13px;}
-  .stack .line .price{font-size:13px;}
-  .stack .diamond{margin:4px 0 8px;}
+  .stack .item{margin-bottom:9px;}
+  .stack .item-name{font-size:14.5px;}
+  .stack .desc{font-size:13px;max-width:48ch;margin-top:2px;}
+  .stack .line{margin-bottom:5px;}
+  .stack .line .item-name{font-size:14px;}
+  .stack .line .price{font-size:14px;}
+  .stack .diamond{margin:5px 0 9px;}
+
+  /* ---- iconite decorative langa titlurile de sectiune (pagina bauturi) ---- */
+  .sec.icon-row{gap:14px;}
+  .sec.icon-row .icon{display:inline-flex;align-items:center;justify-content:center;line-height:0;}
 
   /* randul de titlu cu gramaj + pret unic (Sosuri) */
   .sec-price{display:flex;align-items:baseline;gap:10px;margin:0;}
@@ -215,7 +218,7 @@
     .addbox-title{font-size:14px;margin-bottom:6px;}
     .two{padding-top:10px;}
     .two,.three{zoom:.82;}
-    .stack{zoom:.72;padding-top:4px;}
+    .stack{zoom:.68;padding-top:4px;}
   }
 
   @media screen and (max-width:780px){
@@ -519,7 +522,18 @@
     <!-- coloana stanga: Cafea, Racoritoare, Bere, Soft Drinks -->
     <div class="col">
       <div class="subsec">
-        <div class="sec sm"><span class="ln"></span><h2>Cafea</h2><span class="ln"></span></div>
+        <div class="sec sm icon-row"><span class="ln"></span><h2>Cafea</h2><span class="icon">
+          <svg viewBox="0 0 64 40" width="52" height="33" aria-hidden="true">
+            <g fill="#F3E3C7" stroke="#C2912E" stroke-width="2">
+              <ellipse cx="22" cy="21" rx="16" ry="11" transform="rotate(-25 22 21)"/>
+              <ellipse cx="42" cy="23" rx="16" ry="11" transform="rotate(-12 42 23)"/>
+            </g>
+            <g fill="none" stroke="#C2912E" stroke-width="2">
+              <path d="M14 15 Q22 21 14 29" transform="rotate(-25 22 21)"/>
+              <path d="M34 16 Q42 23 34 31" transform="rotate(-12 42 23)"/>
+            </g>
+          </svg>
+        </span></div>
         <div class="diamond">◆</div>
         <div class="line"><span class="drink-name">Espresso scurt/lung</span><span class="leader"></span><span class="price">9 RON</span></div>
         <div class="line"><span class="drink-name">Espresso dublu</span><span class="leader"></span><span class="price">12 RON</span></div>
@@ -541,7 +555,21 @@
       </div>
 
       <div class="subsec">
-        <div class="sec sm"><span class="ln"></span><h2>Bere</h2><span class="ln"></span></div>
+        <div class="sec sm icon-row"><span class="ln"></span><h2>Bere</h2><span class="icon">
+          <svg viewBox="0 0 64 50" width="52" height="41" aria-hidden="true">
+            <g fill="none" stroke="#C2912E" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+              <g transform="rotate(-16 20 30)">
+                <path d="M15 20 h9 v6 q3 3 3 8 v10 q0 3 -3 3 h-9 q-3 0 -3 -3 v-10 q0 -5 3 -8 z"/>
+                <rect x="16.5" y="8" width="6" height="9" rx="1.5"/>
+              </g>
+              <g transform="rotate(16 46 30)">
+                <path d="M41 20 h9 v6 q3 3 3 8 v10 q0 3 -3 3 h-9 q-3 0 -3 -3 v-10 q0 -5 3 -8 z"/>
+                <rect x="42.5" y="8" width="6" height="9" rx="1.5"/>
+              </g>
+              <path d="M30 8 l2.5 -4 M34 7.5 l-1.5 -5 M38 8 l2.5 -4" stroke-width="1.6"/>
+            </g>
+          </svg>
+        </span></div>
         <div class="diamond">◆</div>
         <div class="line"><span class="drink-name">Ursus Premium 330ml</span><span class="leader"></span><span class="price">11 RON</span></div>
         <div class="line"><span class="drink-name">Peroni Premium 330ml</span><span class="leader"></span><span class="price">11 RON</span></div>
@@ -569,7 +597,21 @@
     <!-- coloana dreapta: Cocktails, Vin -->
     <div class="col">
       <div class="subsec">
-        <div class="sec sm"><span class="ln"></span><h2>Cocktails</h2><span class="ln"></span></div>
+        <div class="sec sm icon-row"><span class="ln"></span><h2>Cocktails</h2><span class="icon">
+          <svg viewBox="0 0 60 70" width="46" height="54" aria-hidden="true">
+            <g fill="none" stroke="#5B6E9E" stroke-width="1.6" stroke-linejoin="round" stroke-linecap="round">
+              <path d="M13 15 Q30 34 47 15 L41 55 Q30 60 19 55 Z"/>
+              <line x1="30" y1="57" x2="30" y2="66"/>
+              <line x1="20" y1="68" x2="40" y2="68"/>
+              <rect x="22" y="30" width="8" height="8" transform="rotate(18 26 34)"/>
+              <rect x="29" y="38" width="8" height="8" transform="rotate(-12 33 42)"/>
+              <circle cx="45" cy="8" r="7.5"/>
+              <line x1="45" y1="0.5" x2="45" y2="15.5"/>
+              <line x1="37.5" y1="8" x2="52.5" y2="8"/>
+              <path d="M6 2 Q11 9 7 17 M9 3 Q13 9 10 16" stroke-width="1.3"/>
+            </g>
+          </svg>
+        </span></div>
         <div class="diamond">◆</div>
         <div class="item">
           <div class="item-row"><span class="cocktail-name">Aperol spritz</span><span class="leader"></span><span class="price">30 RON</span></div>
@@ -590,7 +632,22 @@
       </div>
 
       <div class="subsec">
-        <div class="sec sm"><span class="ln"></span><h2>Vin</h2><span class="ln"></span></div>
+        <div class="sec sm icon-row"><span class="ln"></span><h2>Vin</h2><span class="icon">
+          <svg viewBox="0 0 60 60" width="42" height="42" aria-hidden="true">
+            <path d="M30 14 Q20 2 8 6 Q17 10 19 17" fill="none" stroke="#8a6a22" stroke-width="2" stroke-linecap="round"/>
+            <g fill="#C2912E" opacity=".88">
+              <circle cx="30" cy="16" r="6"/>
+              <circle cx="21" cy="24" r="6"/>
+              <circle cx="39" cy="24" r="6"/>
+              <circle cx="14" cy="34" r="6"/>
+              <circle cx="30" cy="34" r="6"/>
+              <circle cx="46" cy="34" r="6"/>
+              <circle cx="22" cy="44" r="6"/>
+              <circle cx="38" cy="44" r="6"/>
+              <circle cx="30" cy="53" r="6"/>
+            </g>
+          </svg>
+        </span></div>
         <div class="diamond">◆</div>
         <div class="line"><span class="drink-name">Vinul casei 200ml</span><span class="leader"></span><span class="price">14 RON</span></div>
         <div class="line"><span class="drink-name">Tectonic Rose 750ml</span><span class="leader"></span><span class="price">80 RON</span></div>
