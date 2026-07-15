@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Meniu</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;0,800;0,900;1,600&family=EB+Garamond:ital,wght@0,400;0,500;1,400;1,500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#F9F4EA;
+    --paper-edge:#F2EBDB;
+    --navy:#1B2A63;
+    --ink:#3c3a34;
+    --pink:#F5D3D8;
+    --rule:#c9c1ac;
+  }
+
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+
+  body{
+    background:#d9d3c4;
+    font-family:"EB Garamond",Georgia,serif;
+    color:var(--ink);
+    -webkit-font-smoothing:antialiased;
+    padding:28px 16px;
+  }
+
+  .screen-hint{
+    max-width:1180px;margin:0 auto 22px;text-align:center;
+    color:#6a6252;font-size:14px;font-style:italic;
+  }
+
+  .page{
+    width:1180px;
+    max-width:100%;
+    aspect-ratio:297/210;
+    margin:0 auto 30px;
+    background:radial-gradient(120% 120% at 20% 0%, #FCF8F0 0%, var(--paper) 55%, var(--paper-edge) 100%);
+    border:1px solid var(--rule);
+    box-shadow:0 12px 40px rgba(40,35,20,.22);
+    position:relative;
+    padding:26px 30px 26px;
+  }
+
+  .page-label{
+    position:absolute;top:-24px;left:0;width:100%;text-align:center;
+    font-family:"Playfair Display",serif;letter-spacing:.28em;
+    font-size:11px;font-weight:700;color:#8a8270;text-transform:uppercase;
+  }
+
+  /* thin inner frame like the reference */
+  .frame{
+    position:absolute;inset:10px;border:1px solid #e3d5c9;pointer-events:none;
+  }
+
+  .brand{
+    font-family:"Playfair Display",serif;
+    font-weight:900;color:var(--navy);text-align:center;
+    font-size:64px;line-height:.92;letter-spacing:.03em;margin:0 0 10px;
+  }
+
+  /* ---- page 1 : two columns with vertical divider ---- */
+  .two{
+    display:grid;grid-template-columns:1fr 1fr;column-gap:34px;position:relative;
+  }
+  .two::before{
+    content:"";position:absolute;left:50%;top:56px;bottom:0;width:1px;
+    background:linear-gradient(180deg,transparent,rgba(120,110,80,.35) 8%,rgba(120,110,80,.35) 92%,transparent);
+  }
+
+  /* ---- page 2 : three columns ---- */
+  .three{
+    display:grid;grid-template-columns:1fr 1fr 1fr;column-gap:26px;position:relative;
+  }
+  .three::before,.three::after{
+    content:"";position:absolute;top:8px;bottom:0;width:1px;
+    background:linear-gradient(180deg,transparent,rgba(120,110,80,.28) 10%,rgba(120,110,80,.28) 90%,transparent);
+  }
+  .three::before{left:calc(33.333% - 4px);}
+  .three::after{left:calc(66.666% + 4px);}
+
+  .col{display:flex;flex-direction:column;}
+
+  .pill{
+    background:var(--pink);color:var(--navy);
+    font-family:"Playfair Display",serif;font-weight:800;
+    text-align:center;letter-spacing:.10em;font-size:30px;line-height:1.1;
+    padding:10px 14px;border-radius:999px;margin:0 0 14px;
+  }
+  .pill.sm{font-size:21px;padding:11px 14px;}
+  .pill .u{font-family:"EB Garamond",serif;font-weight:500;font-size:13px;letter-spacing:.02em;}
+
+  .head{
+    font-family:"Playfair Display",serif;font-weight:800;color:var(--navy);
+    text-align:center;letter-spacing:.12em;font-size:23px;margin:6px 0 12px;
+  }
+
+  .item{margin-bottom:11px;}
+  .item-row{display:flex;align-items:baseline;gap:8px;}
+  .item-name{
+    font-family:"Playfair Display",serif;font-weight:700;color:var(--navy);
+    text-transform:uppercase;letter-spacing:.03em;font-size:15px;line-height:1.15;
+  }
+  .gram{color:#7d7460;font-size:12px;white-space:nowrap;}
+  .leader{flex:1;border-bottom:1px dotted #c2b9a1;transform:translateY(-3px);min-width:14px;}
+  .price{
+    font-family:"Playfair Display",serif;font-weight:700;color:var(--navy);
+    font-size:15px;white-space:nowrap;
+  }
+  .desc{font-style:italic;color:#5f5747;font-size:12.5px;line-height:1.35;margin-top:2px;max-width:46ch;}
+
+  /* pagina 1: ingrediente cu scris mai mare */
+  .two .desc{font-size:14.5px;line-height:1.4;max-width:50ch;}
+
+  /* pagina 1: coloanele umplu toată pagina, produsele se distribuie uniform */
+  .page{display:flex;flex-direction:column;}
+  .two{flex:1;}
+  .two .col{justify-content:space-between;}
+  .two .addons{margin-top:0;}
+
+  .addons{margin-top:auto;padding-top:10px;}
+  .addons-title{
+    font-family:"Playfair Display",serif;font-weight:700;color:var(--navy);
+    text-transform:uppercase;letter-spacing:.05em;font-size:14px;
+    border-bottom:1.5px solid var(--navy);padding-bottom:5px;margin-bottom:7px;
+  }
+  .line{display:flex;align-items:baseline;gap:8px;margin-bottom:5px;}
+  .line .item-name{font-size:13.5px;}
+  .line .price{font-size:13.5px;}
+
+  .dot{width:100%;text-align:center;color:#b8af98;margin:10px 0 6px;font-size:12px;}
+  .spacer{flex:1;}
+
+  @page{size:A4 landscape;margin:0;}
+  @media print{
+    body{background:#fff;padding:0;}
+    .screen-hint{display:none;}
+    .page{
+      width:297mm;height:210mm;aspect-ratio:auto;margin:0;
+      box-shadow:none;border:none;page-break-after:always;padding:10mm 12mm;
+    }
+    .page:last-child{page-break-after:auto;}
+    .page-label{display:none;}
+  }
+
+  @media (max-width:780px){
+    .two,.three{grid-template-columns:1fr;row-gap:10px;}
+    .two::before,.three::before,.three::after{display:none;}
+    .page{aspect-ratio:auto;}
+    .brand{font-size:46px;}
+    .pill{font-size:24px;}
+  }
+</style>
+</head>
+<body>
+
+<div class="screen-hint">Previzualizare — pentru tipărire: Print → Salvează ca PDF (A4, Landscape).</div>
+
+<!-- ============ PAGINA 1 ============ -->
+<section class="page">
+  <div class="page-label">Pagina 1 · Față</div>
+  <div class="frame"></div>
+
+  <div class="brand">MENIU</div>
+
+  <div class="two">
+    <!-- BURGER -->
+    <div class="col">
+      <div class="pill">Burger</div>
+
+      <div class="item">
+        <div class="item-row"><span class="item-name">Chimi Burger</span><span class="gram">400g</span><span class="leader"></span><span class="price">48 RON</span></div>
+        <div class="desc">cartofi prăjiți, chiflă brioche de casă, vită, brânză gorgonzola, cheddar, rucola, ceapă murată, maioneză în stil chimichurri + sos de usturoi</div>
+      </div>
+
+      <div class="item">
+        <div class="item-row"><span class="item-name">Clasic Smashed Burger</span><span class="gram">400g</span><span class="leader"></span><span class="price">47 RON</span></div>
+        <div class="desc">cartofi prăjiți, chiflă brioche de casă, vită, cheddar, ceapă caramelizată, castraveți murați, sos gochujang + sos de usturoi</div>
+      </div>
+
+      <div class="item">
+        <div class="item-row"><span class="item-name">American Burger</span><span class="gram">400g</span><span class="leader"></span><span class="price">48 RON</span></div>
+        <div class="desc">cartofi prăjiți, chiflă brioche de casă, vită, brânză cheddar, salată iceberg, castraveți murați, ceapă albă, ketchup, sos gochujang + sos de usturoi</div>
+      </div>
+
+      <div class="item">
+        <div class="item-row"><span class="item-name">Italian Burger</span><span class="gram">400g</span><span class="leader"></span><span class="price">49 RON</span></div>
+        <div class="desc">cartofi prăjiți, chiflă brioche de casă, vită, brânză cheddar, salată iceberg, mozzarella, sos bbq, oregano, roșie + sos de usturoi</div>
+      </div>
+
+      <div class="item">
+        <div class="item-row"><span class="item-name">Truffle Burger</span><span class="gram">400g</span><span class="leader"></span><span class="price">50 RON</span></div>
+        <div class="desc">cartofi prăjiți, chiflă brioche de casă, vită, brânză cheddar, parmezan, rucola, sos bbq, castraveți murați, sos de trufe + sos de usturoi</div>
+      </div>
+
+      <div class="item">
+        <div class="item-row"><span class="item-name">Double Cheeseburger</span><span class="gram">400g</span><span class="leader"></span><span class="price">47 RON</span></div>
+        <div class="desc">cartofi prăjiți, chiflă brioche de casă, vită, cheddar, castraveți murați, ketchup, muștar, ceapă + sos de usturoi</div>
+      </div>
+
+      <div class="item">
+        <div class="item-row"><span class="item-name">Texas Burger</span><span class="gram">400g</span><span class="leader"></span><span class="price">53 RON</span></div>
+        <div class="desc">cartofi prăjiți, chiflă brioche de casă, vită, brânză cheddar, ceapă caramelizată, pancetă afumată, jalapeño murați, sos gochujang</div>
+      </div>
+
+    </div>
+
+    <!-- DELICII PANITO -->
+    <div class="col">
+      <div class="pill">Delicii Panito</div>
+
+      <div class="item">
+        <div class="item-row"><span class="item-name">Panini cu mortadella</span><span class="gram">500g</span><span class="leader"></span><span class="price">39 RON</span></div>
+        <div class="desc">focaccia, cremă de brânză, mortadella cu fistic, roșii, rucola, pesto</div>
+      </div>
+
+      <div class="item">
+        <div class="item-row"><span class="item-name">Panino</span><span class="gram">500g</span><span class="leader"></span><span class="price">43 RON</span></div>
+        <div class="desc">focaccia, schnitzel de pui, rucola, ceapă murată, parmezan, sos de usturoi, sos picant</div>
+      </div>
+
+      <div class="item">
+        <div class="item-row"><span class="item-name">Panini Crudo</span><span class="gram">500g</span><span class="leader"></span><span class="price">42 RON</span></div>
+        <div class="desc">focaccia, rucola, cremă de brânză, castraveți, prosciutto crudo, roșii uscate, pesto</div>
+      </div>
+
+      <div class="item">
+        <div class="item-row"><span class="item-name">Panini Picante</span><span class="gram">500g</span><span class="leader"></span><span class="price">41 RON</span></div>
+        <div class="desc">focaccia, cremă de brânză, roșie, salată iceberg, spianata picantă, pesto</div>
+      </div>
+
+      <div class="item">
+        <div class="item-row"><span class="item-name">Panino Supreme</span><span class="gram">600g</span><span class="leader"></span><span class="price">45 RON</span></div>
+        <div class="desc">focaccia, schnitzel de pui, castraveți, roșii, telemea, cartofi prăjiți, ceapă, oregano, sos chimi, ketchup</div>
+      </div>
+
+      <div class="item">
+        <div class="item-row"><span class="item-name">Focaccia Burger</span><span class="gram">600g</span><span class="leader"></span><span class="price">48 RON</span></div>
+        <div class="desc">focaccia, vită, castraveți murați, salată iceberg, ceapă, mozzarella, cartofi prăjiți, oregano, muștar, ketchup</div>
+      </div>
+
+      <div class="addons">
+        <div class="addons-title">Extra</div>
+        <div class="line"><span class="item-name">Extra carne + cheddar</span><span class="leader"></span><span class="price">12 RON</span></div>
+        <div class="line"><span class="item-name">Extra gorgonzola</span><span class="leader"></span><span class="price">11 RON</span></div>
+        <div class="line"><span class="item-name">Extra ceapă caramelizată</span><span class="leader"></span><span class="price">6 RON</span></div>
+        <div class="line"><span class="item-name">Cartofi prăjiți</span><span class="leader"></span><span class="price">12 RON</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PAGINA 2 ============ -->
+<section class="page">
+  <div class="page-label">Pagina 2 · Verso</div>
+  <div class="frame"></div>
+
+  <div class="three" style="padding-top:6px;">
+    <!-- Paste -->
+    <div class="col">
+      <div class="pill sm">Paste</div>
+      <div class="item">
+        <div class="item-row"><span class="item-name">Rigatoni Bolognese</span><span class="gram">350g</span><span class="leader"></span><span class="price">41 RON</span></div>
+        <div class="desc">paste proaspete, ragù (sos din carne de vită redusă), parmezan</div>
+      </div>
+      <div class="item">
+        <div class="item-row"><span class="item-name">Spaghetti cu sos de roșii</span><span class="gram">350g</span><span class="leader"></span><span class="price">33 RON</span></div>
+        <div class="desc">paste proaspete, sos de roșii, măsline, roșii uscate, parmezan</div>
+      </div>
+      <div class="item">
+        <div class="item-row"><span class="item-name">Spaghetti cu gorgonzola</span><span class="gram">350g</span><span class="leader"></span><span class="price">38 RON</span></div>
+        <div class="desc">paste proaspete, smântână lichidă, gorgonzola, parmezan</div>
+      </div>
+      <div class="item">
+        <div class="item-row"><span class="item-name">Carbonara</span><span class="gram">350g</span><span class="leader"></span><span class="price">39 RON</span></div>
+        <div class="desc">paste proaspete, ouă, pancetta, parmezan, pecorino</div>
+      </div>
+      <div class="item">
+        <div class="item-row"><span class="item-name">Spaghetti all'Amatriciana</span><span class="gram">350g</span><span class="leader"></span><span class="price">38 RON</span></div>
+        <div class="desc">paste proaspete, sos de roșii, pancetta, pecorino</div>
+      </div>
+      <div class="spacer"></div>
+    </div>
+
+    <!-- Extra -->
+    <div class="col">
+      <div class="pill sm">Extra</div>
+      <div class="item">
+        <div class="item-row"><span class="item-name">Cartofi prăjiți gourmet</span><span class="gram">280g</span><span class="leader"></span><span class="price">17 RON</span></div>
+        <div class="desc">cartofi, sos de usturoi, parmezan</div>
+      </div>
+      <div class="item">
+        <div class="item-row"><span class="item-name">Cartofi prăjiți simpli</span><span class="gram">150g</span><span class="leader"></span><span class="price">11 RON</span></div>
+        <div class="desc">cartofi simpli</div>
+      </div>
+      <div class="item">
+        <div class="item-row"><span class="item-name">Cartofi prăjiți cu trufe</span><span class="gram">280g</span><span class="leader"></span><span class="price">20 RON</span></div>
+        <div class="desc">cartofi, sos de trufe, parmezan</div>
+      </div>
+      <div class="item">
+        <div class="item-row"><span class="item-name">Cartofi prăjiți cu telemea</span><span class="gram">280g</span><span class="leader"></span><span class="price">16 RON</span></div>
+        <div class="desc">cartofi, telemea rasă</div>
+      </div>
+      <div class="item">
+        <div class="item-row"><span class="item-name">Loaded Fries (Vită)</span><span class="gram">350g</span><span class="leader"></span><span class="price">29 RON</span></div>
+        <div class="desc">cartofi, carne de vită, cheddar, sos gochujang, ceapă caramelizată</div>
+      </div>
+      <div class="item">
+        <div class="item-row"><span class="item-name">Loaded Fries (Pui)</span><span class="gram">350g</span><span class="leader"></span><span class="price">29 RON</span></div>
+        <div class="desc">cartofi, pui crocant în panko, parmezan, sos de trufe, sos bbq</div>
+      </div>
+      <div class="spacer"></div>
+    </div>
+
+    <!-- Focaccia & Sosuri -->
+    <div class="col">
+      <div class="pill sm">Focaccia &amp; Sosuri</div>
+      <div class="line" style="margin-bottom:14px;">
+        <span class="item-name">Focaccia</span><span class="gram">150g</span><span class="leader"></span><span class="price">10 RON</span>
+      </div>
+
+      <div class="dot">•</div>
+
+      <div class="pill sm">Sosuri <span class="u">40g</span></div>
+      <div class="line"><span class="item-name">Sos de usturoi</span><span class="leader"></span><span class="price">5 RON</span></div>
+      <div class="line"><span class="item-name">Sos ketchup</span><span class="leader"></span><span class="price">5 RON</span></div>
+      <div class="line"><span class="item-name">Sos bbq</span><span class="leader"></span><span class="price">5 RON</span></div>
+      <div class="line"><span class="item-name">Sos cu trufe</span><span class="leader"></span><span class="price">5 RON</span></div>
+      <div class="line"><span class="item-name">Sos chimichurri</span><span class="leader"></span><span class="price">5 RON</span></div>
+      <div class="line"><span class="item-name">Sos gochujang picant</span><span class="leader"></span><span class="price">5 RON</span></div>
+      <div class="line"><span class="item-name">Sos sweet chilli</span><span class="leader"></span><span class="price">5 RON</span></div>
+      <div class="line"><span class="item-name">Sos sriracha picant</span><span class="leader"></span><span class="price">5 RON</span></div>
+      <div class="spacer"></div>
+    </div>
+  </div>
+</section>
+
+</body>
+</html>
