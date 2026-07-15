@@ -144,9 +144,12 @@
     }
     .page:last-child{page-break-after:auto;}
     .page-label{display:none;}
+    /* la 297mm conținutul e mai îngust decât pe ecran și textul se împachetează
+       pe rânduri în plus; zoom-ul readuce lățimea efectivă la cea de pe ecran */
+    .two,.three{zoom:.92;}
   }
 
-  @media (max-width:780px){
+  @media screen and (max-width:780px){
     .two,.three{grid-template-columns:1fr;row-gap:10px;}
     .two::before,.three::before,.three::after{display:none;}
     .page{aspect-ratio:auto;}
