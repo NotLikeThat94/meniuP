@@ -59,10 +59,10 @@
   .logo{
     font-family:"Playfair Display",serif;font-weight:800;color:var(--navy);
     font-size:62px;line-height:1;letter-spacing:.16em;margin:0;
-    padding-left:.16em; /* compensează letter-spacing-ul ultimei litere */
+    padding-left:.16em;
     white-space:nowrap;
   }
-  .wi{position:relative;display:inline-block;}
+  .wi{position:relative;display:inline-block;letter-spacing:0;}
   .wheat{
     position:absolute;left:50%;transform:translateX(-50%);
     bottom:96%;width:20px;height:auto;
@@ -79,7 +79,7 @@
     margin:12px 0 0;
   }
 
-  /* ---- titluri de secțiune ---- */
+  /* ---- titluri de sectiune ---- */
   .sec{display:flex;align-items:center;justify-content:center;gap:16px;margin:2px 0 0;}
   .sec .ln{height:2px;width:74px;background:var(--gold);opacity:.85;}
   .sec h2{
@@ -95,7 +95,6 @@
 
   /* ---- coloane ---- */
   .two{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));column-gap:56px;flex:1;padding-top:16px;}
-  /* coloana din dreapta e mai scurtă: distribuie spațiul liber egal între produse */
   .two .col:last-child .item{margin-bottom:auto;}
   .three{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));column-gap:30px;flex:1;padding-top:12px;}
   .col{display:flex;flex-direction:column;}
@@ -118,7 +117,7 @@
   .three .item-name{font-size:13.5px;}
   .three .desc{font-size:12.5px;max-width:46ch;}
 
-  /* ---- caseta „completează cu" ---- */
+  /* ---- caseta "completeaza cu" ---- */
   .addbox{
     border:1.5px solid var(--gold);border-radius:8px;
     padding:12px 20px 9px;margin-top:auto;
@@ -152,6 +151,45 @@
   }
   .mini-title .b{color:var(--gold);font-weight:600;}
 
+  /* ---- pagina densa: 2 coloane cu mai multe sub-sectiuni ---- */
+  .stack{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));column-gap:56px;flex:1;padding-top:10px;}
+  .stack .col{display:flex;flex-direction:column;}
+  .subsec{margin-bottom:14px;}
+  .subsec:last-child{margin-bottom:0;}
+  .stack .sec{margin-top:0;}
+  .stack .item{margin-bottom:8px;}
+  .stack .item-name{font-size:13.5px;}
+  .stack .desc{font-size:12px;max-width:48ch;margin-top:2px;}
+  .stack .line{margin-bottom:4px;}
+  .stack .line .item-name{font-size:13px;}
+  .stack .line .price{font-size:13px;}
+  .stack .diamond{margin:4px 0 8px;}
+
+  /* randul de titlu cu gramaj + pret unic (Sosuri) */
+  .sec-price{display:flex;align-items:baseline;gap:10px;margin:0;}
+  .sec-price .ln{height:2px;width:44px;background:var(--gold);opacity:.85;}
+  .sec-price h2{
+    font-family:"Playfair Display",serif;font-weight:800;color:var(--navy);
+    font-size:21px;letter-spacing:.06em;margin:0;text-transform:uppercase;white-space:nowrap;
+  }
+  .sec-price .gram{margin-left:auto;font-size:13.5px;}
+  .sec-price .leader{min-width:24px;}
+  .sec-price .price{font-size:14px;}
+
+  /* descriere cu gramaj + pret pe acelasi rand (ex: Cartofi prajiti simpli) */
+  .desc-price{display:flex;align-items:baseline;gap:8px;margin-top:3px;}
+  .desc-price .desc{margin:0;flex:0 0 auto;}
+
+  /* nume de bautura: fara majuscule, greutate medie */
+  .drink-name{
+    font-family:"EB Garamond",serif;font-weight:500;color:var(--navy);
+    font-size:15px;
+  }
+  .cocktail-name{
+    font-family:"Playfair Display",serif;font-weight:700;color:var(--navy);
+    font-size:16px;text-transform:none;letter-spacing:0;
+  }
+
   @page{size:A4 landscape;margin:0;}
   @media print{
     body{background:#fff;padding:0;}
@@ -162,9 +200,8 @@
     }
     .page:last-child{page-break-after:auto;}
     .page-label{display:none;}
-    /* fixată la baza paginii — pe granița de fragmentare Chrome o poate pierde */
     .footer{position:absolute;left:0;right:0;bottom:0;margin:0;}
-    .two,.three{padding-bottom:11mm;}
+    .two,.three,.stack{padding-bottom:11mm;}
     .logo{font-size:46px;}
     .logo-row{padding-top:14px;max-width:760px;}
     .bistro{font-size:17px;}
@@ -177,15 +214,14 @@
     .addbox{padding:9px 16px 6px;}
     .addbox-title{font-size:14px;margin-bottom:6px;}
     .two{padding-top:10px;}
-    /* la 297mm conținutul e mai îngust decât pe ecran și textul se împachetează
-       pe rânduri în plus; zoom-ul readuce lățimea efectivă la cea de pe ecran */
     .two,.three{zoom:.82;}
+    .stack{zoom:.86;padding-top:6px;}
   }
 
   @media screen and (max-width:780px){
     body{padding:16px 10px;}
     .page{padding:18px 18px 0;min-height:0;}
-    .two,.three{grid-template-columns:1fr;row-gap:4px;padding-top:12px;}
+    .two,.three,.stack{grid-template-columns:1fr;row-gap:4px;padding-top:12px;}
     .logo{font-size:38px;}
     .logo-row{gap:14px;padding-top:16px;}
     .bistro{font-size:15px;letter-spacing:.4em;padding-left:.4em;}
@@ -204,11 +240,11 @@
 </head>
 <body>
 
-<div class="screen-hint">Previzualizare — pentru tipărire: Print → Salvează ca PDF (A4, Landscape).</div>
+<div class="screen-hint">Previzualizare — pentru tiparire: Print → Salveaza ca PDF (A4, Landscape).</div>
 
 <!-- ============ PAGINA 1 ============ -->
 <section class="page">
-  <div class="page-label">Pagina 1 · Față</div>
+  <div class="page-label">Pagina 1 · Fata</div>
 
   <header class="hero">
     <div class="logo-row">
@@ -221,7 +257,7 @@
       <div class="bistro">BISTRO</div>
       <span class="rule"></span>
     </div>
-    <div class="tagline">Artizanat. Ingrediente premium. Totul pregătit proaspăt, în fiecare zi.</div>
+    <div class="tagline">Artizanat. Ingrediente premium. Totul pregatit proaspat, in fiecare zi.</div>
   </header>
 
   <div class="two">
@@ -231,45 +267,45 @@
       <div class="diamond">◆</div>
 
       <div class="item">
-        <div class="item-row"><span class="item-name">Chimi Burger</span><span class="gram">400g</span><span class="leader"></span><span class="price">48 RON</span></div>
-        <div class="desc">cartofi prăjiți, chiflă brioche de casă, vită, brânză gorgonzola, cheddar, rucola, ceapă murată, maioneză în stil chimichurri + sos de usturoi</div>
+        <div class="item-row"><span class="item-name">Chimi Burger</span><span class="gram">400 g</span><span class="leader"></span><span class="price">48 RON</span></div>
+        <div class="desc">cartofi prajiti, chifla brioche de casa, vita, gorgonzola, cheddar, rucola, ceapa murata, maioneza in stil chimichurri + sos de usturoi</div>
       </div>
 
       <div class="item">
-        <div class="item-row"><span class="item-name">Clasic Smashed Burger</span><span class="gram">400g</span><span class="leader"></span><span class="price">47 RON</span></div>
-        <div class="desc">cartofi prăjiți, chiflă brioche de casă, vită, cheddar, ceapă caramelizată, castraveți murați, sos gochujang + sos de usturoi</div>
+        <div class="item-row"><span class="item-name">Clasic Smashed Burger</span><span class="gram">400 g</span><span class="leader"></span><span class="price">47 RON</span></div>
+        <div class="desc">cartofi prajiti, chifla brioche de casa, vita, cheddar, ceapa caramelizata, castraveti murati, sos gochujang + sos de usturoi</div>
       </div>
 
       <div class="item">
-        <div class="item-row"><span class="item-name">American Burger</span><span class="gram">400g</span><span class="leader"></span><span class="price">48 RON</span></div>
-        <div class="desc">cartofi prăjiți, chiflă brioche de casă, vită, brânză cheddar, salată iceberg, castraveți murați, ceapă albă, ketchup, sos gochujang + sos de usturoi</div>
+        <div class="item-row"><span class="item-name">American Burger</span><span class="gram">400 g</span><span class="leader"></span><span class="price">48 RON</span></div>
+        <div class="desc">cartofi prajiti, chifla brioche de casa, vita, cheddar, salata iceberg, castraveti murati, ceapa alba, ketchup, sos gochujang + sos de usturoi</div>
       </div>
 
       <div class="item">
-        <div class="item-row"><span class="item-name">Italian Burger</span><span class="gram">400g</span><span class="leader"></span><span class="price">49 RON</span></div>
-        <div class="desc">cartofi prăjiți, chiflă brioche de casă, vită, brânză cheddar, salată iceberg, mozzarella, sos bbq, oregano, roșie + sos de usturoi</div>
+        <div class="item-row"><span class="item-name">Italian Burger</span><span class="gram">400 g</span><span class="leader"></span><span class="price">49 RON</span></div>
+        <div class="desc">cartofi prajiti, chifla brioche de casa, vita, cheddar, salata iceberg, mozzarella, sos bbq, oregano, rosie + sos de usturoi</div>
       </div>
 
       <div class="item">
-        <div class="item-row"><span class="item-name">Truffle Burger</span><span class="gram">400g</span><span class="leader"></span><span class="price">50 RON</span></div>
-        <div class="desc">cartofi prăjiți, chiflă brioche de casă, vită, brânză cheddar, parmezan, rucola, sos bbq, castraveți murați, sos de trufe + sos de usturoi</div>
+        <div class="item-row"><span class="item-name">Truffle Burger</span><span class="gram">400 g</span><span class="leader"></span><span class="price">50 RON</span></div>
+        <div class="desc">cartofi prajiti, chifla brioche de casa, vita, cheddar, parmezan, rucola, sos bbq, castraveti murati, sos de trufe + sos de usturoi</div>
       </div>
 
       <div class="item">
-        <div class="item-row"><span class="item-name">Double Cheeseburger</span><span class="gram">400g</span><span class="leader"></span><span class="price">47 RON</span></div>
-        <div class="desc">cartofi prăjiți, chiflă brioche de casă, vită, cheddar, castraveți murați, ketchup, muștar, ceapă + sos de usturoi</div>
+        <div class="item-row"><span class="item-name">Double Cheeseburger</span><span class="gram">400 g</span><span class="leader"></span><span class="price">47 RON</span></div>
+        <div class="desc">cartofi prajiti, chifla brioche de casa, vita, cheddar, castraveti murati, ketchup, mustar, ceapa + sos de usturoi</div>
       </div>
 
       <div class="item">
-        <div class="item-row"><span class="item-name">Texas Burger</span><span class="gram">400g</span><span class="leader"></span><span class="price">53 RON</span></div>
-        <div class="desc">cartofi prăjiți, chiflă brioche de casă, vită, brânză cheddar, ceapă caramelizată, pancetă afumată, jalapeño murați, sos gochujang + sos de usturoi</div>
+        <div class="item-row"><span class="item-name">Texas Burger</span><span class="gram">400 g</span><span class="leader"></span><span class="price">53 RON</span></div>
+        <div class="desc">cartofi prajiti, chifla brioche de casa, vita, cheddar, ceapa caramelizata, panceta afumata, jalapenos murati, sos gochujang + sos de usturoi</div>
       </div>
 
       <div class="addbox">
-        <div class="addbox-title">Completează burgerul cu:</div>
+        <div class="addbox-title">Completeaza burgerul cu:</div>
         <div class="line"><span class="item-name">Extra carne + cheddar</span><span class="leader"></span><span class="price">12 RON</span></div>
         <div class="line"><span class="item-name">Extra gorgonzola</span><span class="leader"></span><span class="price">5 RON</span></div>
-        <div class="line"><span class="item-name">Extra ceapă caramelizată</span><span class="leader"></span><span class="price">4 RON</span></div>
+        <div class="line"><span class="item-name">Extra ceapa caramelizata</span><span class="leader"></span><span class="price">4 RON</span></div>
       </div>
     </div>
 
@@ -279,38 +315,38 @@
       <div class="diamond">◆</div>
 
       <div class="item">
-        <div class="item-row"><span class="item-name">Panini cu mortadella</span><span class="gram">500g</span><span class="leader"></span><span class="price">39 RON</span></div>
-        <div class="desc">focaccia, cremă de brânză, mortadella cu fistic, roșii, rucola, pesto</div>
+        <div class="item-row"><span class="item-name">Panini cu mortadella</span><span class="gram">500 g</span><span class="leader"></span><span class="price">39 RON</span></div>
+        <div class="desc">focaccia, crema de branza, mortadella cu fistic, rosii, rucola, pesto</div>
       </div>
 
       <div class="item">
-        <div class="item-row"><span class="item-name">Panino</span><span class="gram">500g</span><span class="leader"></span><span class="price">43 RON</span></div>
-        <div class="desc">focaccia, schnitzel de pui, rucola, ceapă murată, parmezan, sos de usturoi, sos picant</div>
+        <div class="item-row"><span class="item-name">Panino</span><span class="gram">500 g</span><span class="leader"></span><span class="price">43 RON</span></div>
+        <div class="desc">focaccia, schnitzel de pui, rucola, ceapa murata, parmezan, sos de usturoi, sos picant</div>
       </div>
 
       <div class="item">
-        <div class="item-row"><span class="item-name">Panini Crudo</span><span class="gram">500g</span><span class="leader"></span><span class="price">42 RON</span></div>
-        <div class="desc">focaccia, rucola, cremă de brânză, castraveți, prosciutto crudo, roșii uscate, pesto</div>
+        <div class="item-row"><span class="item-name">Panini Crudo</span><span class="gram">500 g</span><span class="leader"></span><span class="price">42 RON</span></div>
+        <div class="desc">focaccia, rucola, crema de branza, castraveti, prosciutto crudo, rosii uscate, pesto</div>
       </div>
 
       <div class="item">
-        <div class="item-row"><span class="item-name">Panini Picante</span><span class="gram">500g</span><span class="leader"></span><span class="price">41 RON</span></div>
-        <div class="desc">focaccia, cremă de brânză, roșie, salată iceberg, spianata picantă, pesto</div>
+        <div class="item-row"><span class="item-name">Panini Picante</span><span class="gram">500 g</span><span class="leader"></span><span class="price">41 RON</span></div>
+        <div class="desc">focaccia, crema de branza, rosie, salata iceberg, spinata picant, pesto</div>
       </div>
 
       <div class="item">
-        <div class="item-row"><span class="item-name">Panino Supreme</span><span class="gram">600g</span><span class="leader"></span><span class="price">45 RON</span></div>
-        <div class="desc">focaccia, schnitzel de pui, castraveți, roșii, telemea, cartofi prăjiți, ceapă, oregano, sos chimi, ketchup</div>
+        <div class="item-row"><span class="item-name">Panino Supreme</span><span class="gram">600 g</span><span class="leader"></span><span class="price">45 RON</span></div>
+        <div class="desc">focaccia, schnitzel de pui, castraveti, rosii, telemea, cartofi prajiti, ceapa, oregano, sos chimi, ketchup</div>
       </div>
 
       <div class="item">
-        <div class="item-row"><span class="item-name">Focaccia Burger</span><span class="gram">600g</span><span class="leader"></span><span class="price">48 RON</span></div>
-        <div class="desc">focaccia, vită, castraveți murați, salată iceberg, ceapă, mozzarella, cartofi prăjiți, oregano, muștar, ketchup</div>
+        <div class="item-row"><span class="item-name">Focaccia Burger</span><span class="gram">600 g</span><span class="leader"></span><span class="price">48 RON</span></div>
+        <div class="desc">focaccia, vita, castraveti murati, salata iceberg, ceapa, mozzarella, cartofi prajiti, oregano, mustar, ketchup</div>
       </div>
 
       <div class="addbox">
-        <div class="addbox-title">Completează preparatul cu:</div>
-        <div class="line"><span class="item-name">Cartofi prăjiți</span><span class="leader"></span><span class="price">12 RON</span></div>
+        <div class="addbox-title">Completeaza preparatul cu:</div>
+        <div class="line"><span class="item-name">Cartofi prajiti</span><span class="leader"></span><span class="price">12 RON</span></div>
       </div>
     </div>
   </div>
@@ -328,84 +364,243 @@
     <span class="rule"></span>
   </div>
 
-  <div class="three">
-    <!-- Paste -->
+  <div class="stack">
+    <!-- coloana stanga: Salate, Pui, Paste -->
     <div class="col">
-      <div class="sec sm"><span class="ln"></span><h2>Paste</h2><span class="ln"></span></div>
-      <div class="diamond">◆</div>
-      <div class="item">
-        <div class="item-row"><span class="item-name">Rigatoni Bolognese</span><span class="gram">350g</span><span class="leader"></span><span class="price">41 RON</span></div>
-        <div class="desc">paste proaspete, ragù (sos din carne de vită redusă), parmezan</div>
+      <div class="subsec">
+        <div class="sec sm"><span class="ln"></span><h2>Salate</h2><span class="ln"></span></div>
+        <div class="diamond">◆</div>
+        <div class="item">
+          <div class="item-row"><span class="item-name">Salata cu pui panko</span><span class="gram">300 g</span><span class="leader"></span><span class="price">34 RON</span></div>
+          <div class="desc">salata iceberg, pui crocant in panko, rosii cherry, vinegreta, parmezan, oregano, crutoane de casa</div>
+        </div>
       </div>
-      <div class="item">
-        <div class="item-row"><span class="item-name">Spaghetti cu sos de roșii</span><span class="gram">350g</span><span class="leader"></span><span class="price">33 RON</span></div>
-        <div class="desc">paste proaspete, sos de roșii, măsline, roșii uscate, parmezan</div>
+
+      <div class="subsec">
+        <div class="sec sm"><span class="ln"></span><h2>Pui</h2><span class="ln"></span></div>
+        <div class="diamond">◆</div>
+        <div class="item">
+          <div class="item-row"><span class="item-name">Schnitzel Parm</span><span class="gram">350 g</span><span class="leader"></span><span class="price">39 RON</span></div>
+          <div class="desc">piept de pui, rucola, vinegreta, rosii cherry, parmezan</div>
+        </div>
+        <div class="item">
+          <div class="item-row"><span class="item-name">Crispy Strips</span><span class="gram">450 g</span><span class="leader"></span><span class="price">37 RON</span></div>
+          <div class="desc">cartofi prajiti, muschiuleti de pui + sos de usturoi</div>
+        </div>
+        <div class="item">
+          <div class="item-row"><span class="item-name">Crispy Burger</span><span class="gram">400 g</span><span class="leader"></span><span class="price">45 RON</span></div>
+          <div class="desc">cartofi prajiti, pui crocant in panko, castraveti murati, salata iceberg, parmezan, sos bbq, sos de usturoi + sos de usturoi</div>
+        </div>
       </div>
-      <div class="item">
-        <div class="item-row"><span class="item-name">Spaghetti cu gorgonzola</span><span class="gram">350g</span><span class="leader"></span><span class="price">38 RON</span></div>
-        <div class="desc">paste proaspete, smântână lichidă, gorgonzola, parmezan</div>
+
+      <div class="subsec">
+        <div class="sec sm"><span class="ln"></span><h2>Paste</h2><span class="ln"></span></div>
+        <div class="diamond">◆</div>
+        <div class="item">
+          <div class="item-row"><span class="item-name">Rigatoni Bolognese</span><span class="gram">350 g</span><span class="leader"></span><span class="price">43 RON</span></div>
+          <div class="desc">paste proaspete, ragu (sos din carne de vita redus), parmezan</div>
+        </div>
+        <div class="item">
+          <div class="item-row"><span class="item-name">Spaghetti cu sos de rosii</span><span class="gram">350 g</span><span class="leader"></span><span class="price">35 RON</span></div>
+          <div class="desc">paste proaspete, sos de rosii, masline, rosii uscate, parmezan</div>
+        </div>
+        <div class="item">
+          <div class="item-row"><span class="item-name">Spaghetti cu gorgonzola</span><span class="gram">350 g</span><span class="leader"></span><span class="price">40 RON</span></div>
+          <div class="desc">paste proaspete, smantana lichida, gorgonzola, parmezan</div>
+        </div>
+        <div class="item">
+          <div class="item-row"><span class="item-name">Carbonara</span><span class="gram">350 g</span><span class="leader"></span><span class="price">43 RON</span></div>
+          <div class="desc">paste proaspete, oua, pancetta, parmezan, pecorino</div>
+        </div>
+        <div class="item">
+          <div class="item-row"><span class="item-name">Spaghetti all'Amatriciana</span><span class="gram">350 g</span><span class="leader"></span><span class="price">41 RON</span></div>
+          <div class="desc">paste proaspete, sos de rosii, pancetta, pecorino</div>
+        </div>
+        <div class="item">
+          <div class="item-row"><span class="item-name">Spaghetti Tartufa</span><span class="gram">350 g</span><span class="leader"></span><span class="price">48 RON</span></div>
+          <div class="desc">paste proaspete, smantana lichida, tartufata, piper, parmezan</div>
+        </div>
+        <div class="item">
+          <div class="item-row"><span class="item-name">Pesto Pasta</span><span class="gram">350 g</span><span class="leader"></span><span class="price">42 RON</span></div>
+          <div class="desc">paste proaspete, pesto, rosii uscate, parmezan</div>
+        </div>
       </div>
-      <div class="item">
-        <div class="item-row"><span class="item-name">Carbonara</span><span class="gram">350g</span><span class="leader"></span><span class="price">39 RON</span></div>
-        <div class="desc">paste proaspete, ouă, pancetta, parmezan, pecorino</div>
-      </div>
-      <div class="item">
-        <div class="item-row"><span class="item-name">Spaghetti all'Amatriciana</span><span class="gram">350g</span><span class="leader"></span><span class="price">38 RON</span></div>
-        <div class="desc">paste proaspete, sos de roșii, pancetta, pecorino</div>
-      </div>
-      <div class="spacer"></div>
     </div>
 
-    <!-- Cartofi & Extra -->
+    <!-- coloana dreapta: Sides, Sosuri, Plus de gust, Desert -->
     <div class="col">
-      <div class="sec sm"><span class="ln"></span><h2>Extra</h2><span class="ln"></span></div>
-      <div class="diamond">◆</div>
-      <div class="item">
-        <div class="item-row"><span class="item-name">Cartofi prăjiți gourmet</span><span class="gram">280g</span><span class="leader"></span><span class="price">17 RON</span></div>
-        <div class="desc">cartofi, sos de usturoi, parmezan</div>
+      <div class="subsec">
+        <div class="sec sm"><span class="ln"></span><h2>Sides</h2><span class="ln"></span></div>
+        <div class="diamond">◆</div>
+        <div class="item">
+          <div class="item-row"><span class="item-name">Cartofi prajiti</span></div>
+          <div class="desc-price"><span class="desc">cartofi simpli</span><span class="gram">250 g</span><span class="leader"></span><span class="price">11 RON</span></div>
+        </div>
+        <div class="item">
+          <div class="item-row"><span class="item-name">Cartofi prajiti gourmet</span><span class="gram">280 g</span><span class="leader"></span><span class="price">17 RON</span></div>
+          <div class="desc">cartofi, sos de usturoi, parmezan</div>
+        </div>
+        <div class="item">
+          <div class="item-row"><span class="item-name">Cartofi prajiti cu trufe</span><span class="gram">280 g</span><span class="leader"></span><span class="price">20 RON</span></div>
+          <div class="desc">cartofi, sos de trufe, parmezan</div>
+        </div>
+        <div class="item">
+          <div class="item-row"><span class="item-name">Loaded Fries (Vita)</span><span class="gram">350 g</span><span class="leader"></span><span class="price">35 RON</span></div>
+          <div class="desc">cartofi, carne de vita, cheddar, sos gochujang, ceapa caramelizata</div>
+        </div>
+        <div class="item">
+          <div class="item-row"><span class="item-name">Loaded Fries (Pancetta si Jalapeno)</span><span class="gram">350 g</span><span class="leader"></span><span class="price">34 RON</span></div>
+          <div class="desc">cartofi, pancetta afumata, jalapeno murati, telemea, sos chimi</div>
+        </div>
+        <div class="item">
+          <div class="item-row"><span class="item-name">Cartofi prajiti cu telemea</span><span class="gram">280 g</span><span class="leader"></span><span class="price">16 RON</span></div>
+          <div class="desc">cartofi, telemea rasa</div>
+        </div>
+        <div class="item">
+          <div class="item-row"><span class="item-name">Loaded Fries (Pui)</span><span class="gram">350 g</span><span class="leader"></span><span class="price">33 RON</span></div>
+          <div class="desc">cartofi, pui crocant panko, parmezan, sos trufe, sos bbq</div>
+        </div>
+        <div class="line"><span class="item-name">Focaccia</span><span class="gram">150 g</span><span class="leader"></span><span class="price">10 RON</span></div>
       </div>
-      <div class="item">
-        <div class="item-row"><span class="item-name">Cartofi prăjiți simpli</span><span class="gram">150g</span><span class="leader"></span><span class="price">11 RON</span></div>
-        <div class="desc">cartofi simpli</div>
+
+      <div class="subsec">
+        <div class="sec-price"><span class="ln"></span><h2>Sosuri</h2><span class="gram">40 g</span><span class="leader"></span><span class="price">5 RON</span></div>
+        <div class="diamond">◆</div>
+        <div class="line"><span class="item-name">Sos de usturoi</span><span class="leader"></span></div>
+        <div class="line"><span class="item-name">Sos ketchup</span><span class="leader"></span></div>
+        <div class="line"><span class="item-name">Sos bbq</span><span class="leader"></span></div>
+        <div class="line"><span class="item-name">Sos cu trufe</span><span class="leader"></span></div>
+        <div class="line"><span class="item-name">Sos chimichurri</span><span class="leader"></span></div>
+        <div class="line"><span class="item-name">Sos gochujang 🌶🌶</span><span class="leader"></span></div>
+        <div class="line"><span class="item-name">Sos sweet chilly</span><span class="leader"></span></div>
+        <div class="line"><span class="item-name">Sos sriracha 🌶🌶🌶</span><span class="leader"></span></div>
       </div>
-      <div class="item">
-        <div class="item-row"><span class="item-name">Cartofi prăjiți cu trufe</span><span class="gram">280g</span><span class="leader"></span><span class="price">20 RON</span></div>
-        <div class="desc">cartofi, sos de trufe, parmezan</div>
+
+      <div class="subsec">
+        <div class="sec sm"><span class="ln"></span><h2>Plus de gust</h2><span class="ln"></span></div>
+        <div class="line"><span class="item-name">Sos de usturoi +parmezan</span><span class="leader"></span><span class="price">8 RON</span></div>
+        <div class="line"><span class="item-name">Sos de trufe +parmezan</span><span class="leader"></span><span class="price">11 RON</span></div>
+        <div class="line"><span class="item-name">Telemea</span><span class="leader"></span><span class="price">8 RON</span></div>
       </div>
-      <div class="item">
-        <div class="item-row"><span class="item-name">Cartofi prăjiți cu telemea</span><span class="gram">280g</span><span class="leader"></span><span class="price">16 RON</span></div>
-        <div class="desc">cartofi, telemea rasă</div>
+
+      <div class="subsec">
+        <div class="sec sm"><span class="ln"></span><h2>Desert</h2><span class="ln"></span></div>
+        <div class="diamond">◆</div>
+        <div class="item">
+          <div class="item-row"><span class="item-name">Waffles</span><span class="gram">300 g</span><span class="leader"></span><span class="price">33 RON</span></div>
+          <div class="desc">vafe de casa, nutella, nuca, banana</div>
+        </div>
       </div>
-      <div class="item">
-        <div class="item-row"><span class="item-name">Loaded Fries (Vită)</span><span class="gram">350g</span><span class="leader"></span><span class="price">29 RON</span></div>
-        <div class="desc">cartofi, carne de vită, cheddar, sos gochujang, ceapă caramelizată</div>
+    </div>
+  </div>
+
+  <div class="footer">PANITO&nbsp;&nbsp;◆&nbsp;&nbsp;BISTRO</div>
+</section>
+
+<!-- ============ PAGINA 3 ============ -->
+<section class="page">
+  <div class="page-label">Pagina 3 · Bauturi</div>
+
+  <header class="hero">
+    <div class="logo-row">
+      <span class="rule"></span>
+      <h1 class="logo">PAN<span class="wi">ı<svg class="wheat" viewBox="0 0 24 34" aria-hidden="true"><g fill="#C2912E"><ellipse cx="12" cy="5" rx="2.6" ry="4.8"/><ellipse cx="7.6" cy="11.5" rx="2.4" ry="4.5" transform="rotate(-28 7.6 11.5)"/><ellipse cx="16.4" cy="11.5" rx="2.4" ry="4.5" transform="rotate(28 16.4 11.5)"/><ellipse cx="6.6" cy="18.5" rx="2.4" ry="4.5" transform="rotate(-30 6.6 18.5)"/><ellipse cx="17.4" cy="18.5" rx="2.4" ry="4.5" transform="rotate(30 17.4 18.5)"/></g><path d="M12 9 V34" stroke="#C2912E" stroke-width="2" fill="none"/></svg></span>TO</h1>
+      <span class="rule"></span>
+    </div>
+    <div class="bistro-row">
+      <span class="rule"></span>
+      <div class="bistro">BISTRO</div>
+      <span class="rule"></span>
+    </div>
+    <div class="tagline">Artizanat. Ingrediente premium. Totul pregatit proaspat, in fiecare zi.</div>
+  </header>
+
+  <div class="stack">
+    <!-- coloana stanga: Cafea, Racoritoare, Bere, Soft Drinks -->
+    <div class="col">
+      <div class="subsec">
+        <div class="sec sm"><span class="ln"></span><h2>Cafea</h2><span class="ln"></span></div>
+        <div class="diamond">◆</div>
+        <div class="line"><span class="drink-name">Espresso scurt/lung</span><span class="leader"></span><span class="price">9 RON</span></div>
+        <div class="line"><span class="drink-name">Espresso dublu</span><span class="leader"></span><span class="price">12 RON</span></div>
+        <div class="line"><span class="drink-name">Cappuccino</span><span class="leader"></span><span class="price">13 RON</span></div>
+        <div class="line"><span class="drink-name">Caffe latte</span><span class="leader"></span><span class="price">14 RON</span></div>
+        <div class="line"><span class="drink-name">Iced latte</span><span class="leader"></span><span class="price">14 RON</span></div>
       </div>
-      <div class="item">
-        <div class="item-row"><span class="item-name">Loaded Fries (Pui)</span><span class="gram">350g</span><span class="leader"></span><span class="price">29 RON</span></div>
-        <div class="desc">cartofi, pui crocant în panko, parmezan, sos de trufe, sos bbq</div>
+
+      <div class="subsec">
+        <div class="sec sm"><span class="ln"></span><h2>Racoritoare</h2><span class="ln"></span></div>
+        <div class="diamond">◆</div>
+        <div class="line"><span class="drink-name">Apa plata / minerala 330ml</span><span class="leader"></span><span class="price">10 RON</span></div>
+        <div class="line"><span class="drink-name">Apa plata / minerala 750ml</span><span class="leader"></span><span class="price">17 RON</span></div>
+        <div class="line"><span class="drink-name">Coca Cola / Cola Zero / 250ml</span><span class="leader"></span><span class="price">10 RON</span></div>
+        <div class="line"><span class="drink-name">Sprite / Fanta 250ml</span><span class="leader"></span><span class="price">10 RON</span></div>
+        <div class="line"><span class="drink-name">Fuzetea 500ml</span><span class="leader"></span><span class="price">11 RON</span></div>
+        <div class="line"><span class="drink-name">Schweppes 270ml</span><span class="leader"></span><span class="price">11 RON</span></div>
+        <div class="line"><span class="drink-name">Red bull / Burn 250ml</span><span class="leader"></span><span class="price">18 RON</span></div>
       </div>
-      <div class="spacer"></div>
+
+      <div class="subsec">
+        <div class="sec sm"><span class="ln"></span><h2>Bere</h2><span class="ln"></span></div>
+        <div class="diamond">◆</div>
+        <div class="line"><span class="drink-name">Ursus Premium 330ml</span><span class="leader"></span><span class="price">11 RON</span></div>
+        <div class="line"><span class="drink-name">Peroni Premium 330ml</span><span class="leader"></span><span class="price">11 RON</span></div>
+        <div class="line"><span class="drink-name">Peroni Capri 330ml</span><span class="leader"></span><span class="price">12 RON</span></div>
+        <div class="line"><span class="drink-name">Ursus Cooler 330ml</span><span class="leader"></span><span class="price">11 RON</span></div>
+        <div class="line"><span class="drink-name">Kozel Dark 330ml</span><span class="leader"></span><span class="price">11 RON</span></div>
+        <div class="line"><span class="drink-name">Kozel Premium 330ml</span><span class="leader"></span><span class="price">11 RON</span></div>
+        <div class="line"><span class="drink-name">Peroni fara alcool 330ml</span><span class="leader"></span><span class="price">12 RON</span></div>
+        <div class="line"><span class="drink-name">Ursus fara alcool 330ml</span><span class="leader"></span><span class="price">12 RON</span></div>
+        <div class="line"><span class="drink-name">Ursus Remix zmeura/soc 330ml</span><span class="leader"></span><span class="price">11 RON</span></div>
+      </div>
+
+      <div class="subsec">
+        <div class="sec sm"><span class="ln"></span><h2>Soft drinks</h2><span class="ln"></span></div>
+        <div class="line"><span class="drink-name">Socata artizanala 270ml</span><span class="leader"></span><span class="price">18 RON</span></div>
+        <div class="line"><span class="drink-name">Limonada clasica 250ml</span><span class="leader"></span><span class="price">23 RON</span></div>
+        <div class="line"><span class="drink-name">Limonada cu soc 250ml</span><span class="leader"></span><span class="price">23 RON</span></div>
+        <div class="line"><span class="drink-name">Limonada cu capsuni 250ml</span><span class="leader"></span><span class="price">23 RON</span></div>
+        <div class="line"><span class="drink-name">Limonada cu pepene rosu 250ml</span><span class="leader"></span><span class="price">23 RON</span></div>
+        <div class="line"><span class="drink-name">Limonada cu rodie 250ml</span><span class="leader"></span><span class="price">23 RON</span></div>
+        <div class="line"><span class="drink-name">Fresh portocale / grepfrut / mix 300ml</span><span class="leader"></span><span class="price">22 RON</span></div>
+      </div>
     </div>
 
-    <!-- Focaccia & Sosuri -->
+    <!-- coloana dreapta: Cocktails, Vin -->
     <div class="col">
-      <div class="sec sm"><span class="ln"></span><h2>Focaccia</h2><span class="ln"></span></div>
-      <div class="diamond">◆</div>
-      <div class="line" style="margin-bottom:16px;">
-        <span class="item-name">Focaccia</span><span class="gram">150g</span><span class="leader"></span><span class="price">10 RON</span>
+      <div class="subsec">
+        <div class="sec sm"><span class="ln"></span><h2>Cocktails</h2><span class="ln"></span></div>
+        <div class="diamond">◆</div>
+        <div class="item">
+          <div class="item-row"><span class="cocktail-name">Aperol spritz</span><span class="leader"></span><span class="price">30 RON</span></div>
+          <div class="desc">aperol, prosecco, gheata, apa minerala, portocala proaspata</div>
+        </div>
+        <div class="item">
+          <div class="item-row"><span class="cocktail-name">Hugo</span><span class="leader"></span><span class="price">30 RON</span></div>
+          <div class="desc">prosecco, menta proaspata, sirop de soc, lime, gheata, apa minerala</div>
+        </div>
+        <div class="item">
+          <div class="item-row"><span class="cocktail-name">Cuba libre</span><span class="leader"></span><span class="price">30 RON</span></div>
+          <div class="desc">rom, lime, cola, gheata</div>
+        </div>
+        <div class="item">
+          <div class="item-row"><span class="cocktail-name">Gin tonic</span><span class="leader"></span><span class="price">30 RON</span></div>
+          <div class="desc">gin, lamaie/lime, apa tonica, gheata</div>
+        </div>
       </div>
 
-      <div class="sec sm"><span class="ln"></span><h2>Sosuri <span class="hgram">40g</span></h2><span class="ln"></span></div>
-      <div class="diamond">◆</div>
-      <div class="line"><span class="item-name">Sos de usturoi</span><span class="leader"></span><span class="price">5 RON</span></div>
-      <div class="line"><span class="item-name">Sos ketchup</span><span class="leader"></span><span class="price">5 RON</span></div>
-      <div class="line"><span class="item-name">Sos bbq</span><span class="leader"></span><span class="price">5 RON</span></div>
-      <div class="line"><span class="item-name">Sos cu trufe</span><span class="leader"></span><span class="price">5 RON</span></div>
-      <div class="line"><span class="item-name">Sos chimichurri</span><span class="leader"></span><span class="price">5 RON</span></div>
-      <div class="line"><span class="item-name">Sos gochujang picant</span><span class="leader"></span><span class="price">5 RON</span></div>
-      <div class="line"><span class="item-name">Sos sweet chilli</span><span class="leader"></span><span class="price">5 RON</span></div>
-      <div class="line"><span class="item-name">Sos sriracha picant</span><span class="leader"></span><span class="price">5 RON</span></div>
-      <div class="spacer"></div>
+      <div class="subsec">
+        <div class="sec sm"><span class="ln"></span><h2>Vin</h2><span class="ln"></span></div>
+        <div class="diamond">◆</div>
+        <div class="line"><span class="drink-name">Vinul casei 200ml</span><span class="leader"></span><span class="price">14 RON</span></div>
+        <div class="line"><span class="drink-name">Tectonic Rose 750ml</span><span class="leader"></span><span class="price">80 RON</span></div>
+        <div class="line"><span class="drink-name">Tectonic Sauvignon Blanc 750ml</span><span class="leader"></span><span class="price">80 RON</span></div>
+        <div class="line"><span class="drink-name">Tectonic Feteasca Neagra Barrique 750ml</span><span class="leader"></span><span class="price">80 RON</span></div>
+        <div class="line"><span class="drink-name">Epicentrum Sara &amp; Pavale 750ml</span><span class="leader"></span><span class="price">85 RON</span></div>
+        <div class="line"><span class="drink-name">Bacanta Sarba, Special Edition 750ml</span><span class="leader"></span><span class="price">110 RON</span></div>
+        <div class="line"><span class="drink-name">Bacanta Feteasca Neagra 750ml</span><span class="leader"></span><span class="price">125 RON</span></div>
+        <div class="line"><span class="drink-name">Varancha Feteasca Regala 750ml</span><span class="leader"></span><span class="price">50 RON</span></div>
+      </div>
     </div>
   </div>
 
