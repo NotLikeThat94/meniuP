@@ -164,6 +164,12 @@
   .stack .line .price{font-size:14px;}
   .stack .diamond{margin:5px 0 9px;}
 
+  /* ---- pagina bauturi: sectiuni aerisite, aliniate intre coloane ---- */
+  .stack-drinks .col{justify-content:flex-start;}
+  .stack-drinks .subsec{margin-bottom:28px;}
+  .stack-drinks .subsec.airy .line{margin-bottom:22px;}
+  .stack-drinks .spacer{flex:1;}
+
   /* ---- iconite decorative langa titlurile de sectiune (pagina bauturi) ---- */
   .sec.icon-row{gap:14px;}
   .sec.icon-row .icon{display:inline-flex;align-items:center;justify-content:center;line-height:0;}
@@ -518,10 +524,10 @@
     <div class="tagline">Artizanat. Ingrediente premium. Totul pregatit proaspat, in fiecare zi.</div>
   </header>
 
-  <div class="stack">
+  <div class="stack stack-drinks">
     <!-- coloana stanga: Cafea, Racoritoare, Soft Drinks -->
     <div class="col">
-      <div class="subsec">
+      <div class="subsec airy">
         <div class="sec sm icon-row"><span class="ln"></span><h2>Cafea</h2><span class="icon">
           <svg viewBox="0 0 70 46" width="56" height="37" aria-hidden="true">
             <g fill="#F3E3C7" stroke="#C2912E" stroke-width="1.8">
@@ -544,7 +550,7 @@
         <div class="line"><span class="drink-name">Iced latte</span><span class="leader"></span><span class="price">14 RON</span></div>
       </div>
 
-      <div class="subsec">
+      <div class="subsec airy">
         <div class="sec sm"><span class="ln"></span><h2>Racoritoare</h2><span class="ln"></span></div>
         <div class="diamond">◆</div>
         <div class="line"><span class="drink-name">Apa plata / minerala 330ml</span><span class="leader"></span><span class="price">10 RON</span></div>
@@ -566,6 +572,7 @@
         <div class="line"><span class="drink-name">Limonada cu rodie 250ml</span><span class="leader"></span><span class="price">23 RON</span></div>
         <div class="line"><span class="drink-name">Fresh portocale / grepfrut / mix 300ml</span><span class="leader"></span><span class="price">22 RON</span></div>
       </div>
+      <div class="spacer"></div>
     </div>
 
     <!-- coloana dreapta: Bere, Cocktails, Vin -->
@@ -676,6 +683,7 @@
         <div class="line"><span class="drink-name">Bacanta Feteasca Neagra 750ml</span><span class="leader"></span><span class="price">125 RON</span></div>
         <div class="line"><span class="drink-name">Varancha Feteasca Regala 750ml</span><span class="leader"></span><span class="price">50 RON</span></div>
       </div>
+      <div class="spacer"></div>
     </div>
   </div>
 
