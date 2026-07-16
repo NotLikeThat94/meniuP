@@ -164,11 +164,13 @@
   .stack .line .price{font-size:14px;}
   .stack .diamond{margin:5px 0 9px;}
 
-  /* ---- pagina bauturi: sectiuni aerisite, aliniate intre coloane ---- */
-  .stack-drinks .col{justify-content:flex-start;}
-  .stack-drinks .subsec{margin-bottom:28px;}
-  .stack-drinks .subsec.airy .line{margin-bottom:22px;}
-  .stack-drinks .spacer{flex:1;}
+  /* ---- pagina bauturi: randuri perechi (stanga/dreapta) aliniate ---- */
+  .stack-drinks{row-gap:22px;}
+  .stack-drinks .subsec{display:flex;flex-direction:column;margin-bottom:0;}
+  .stack-drinks .sec.sm{min-height:64px;}
+  .stack-drinks .drink-list{flex:1;display:flex;flex-direction:column;justify-content:space-between;}
+  .stack-drinks .drink-list .line,
+  .stack-drinks .drink-list .item{margin-bottom:0;}
 
   /* ---- iconite decorative langa titlurile de sectiune (pagina bauturi) ---- */
   .sec.icon-row{gap:14px;}
@@ -525,77 +527,52 @@
   </header>
 
   <div class="stack stack-drinks">
-    <!-- coloana stanga: Cafea, Racoritoare, Soft Drinks -->
-    <div class="col">
-      <div class="subsec airy">
-        <div class="sec sm icon-row"><span class="ln"></span><h2>Cafea</h2><span class="icon">
-          <svg viewBox="0 0 70 46" width="56" height="37" aria-hidden="true">
-            <g fill="#F3E3C7" stroke="#C2912E" stroke-width="1.8">
-              <path d="M20 10 C28 10 34 16 32 24 C34 32 28 38 20 38 C12 38 6 32 8 24 C6 16 12 10 20 10 Z" transform="rotate(-18 20 24)"/>
-              <path d="M20 10 C28 10 34 16 32 24 C34 32 28 38 20 38 C12 38 6 32 8 24 C6 16 12 10 20 10 Z" transform="translate(27,-3) rotate(14 20 24)"/>
-              <path d="M20 10 C28 10 34 16 32 24 C34 32 28 38 20 38 C12 38 6 32 8 24 C6 16 12 10 20 10 Z" transform="translate(1,13) scale(.8) rotate(-42 20 24)"/>
-            </g>
-            <g fill="none" stroke="#C2912E" stroke-width="1.5">
-              <path d="M20 12 Q26 24 20 36" transform="rotate(-18 20 24)"/>
-              <path d="M20 12 Q26 24 20 36" transform="translate(27,-3) rotate(14 20 24)"/>
-              <path d="M20 12 Q26 24 20 36" transform="translate(1,13) scale(.8) rotate(-42 20 24)"/>
-            </g>
-          </svg>
-        </span></div>
-        <div class="diamond">◆</div>
+    <!-- rand 1: Cafea / Bere -->
+    <div class="subsec">
+      <div class="sec sm icon-row"><span class="ln"></span><h2>Cafea</h2><span class="icon">
+        <svg viewBox="0 0 70 46" width="56" height="37" aria-hidden="true">
+          <g fill="#F3E3C7" stroke="#C2912E" stroke-width="1.8">
+            <path d="M20 10 C28 10 34 16 32 24 C34 32 28 38 20 38 C12 38 6 32 8 24 C6 16 12 10 20 10 Z" transform="rotate(-18 20 24)"/>
+            <path d="M20 10 C28 10 34 16 32 24 C34 32 28 38 20 38 C12 38 6 32 8 24 C6 16 12 10 20 10 Z" transform="translate(27,-3) rotate(14 20 24)"/>
+            <path d="M20 10 C28 10 34 16 32 24 C34 32 28 38 20 38 C12 38 6 32 8 24 C6 16 12 10 20 10 Z" transform="translate(1,13) scale(.8) rotate(-42 20 24)"/>
+          </g>
+          <g fill="none" stroke="#C2912E" stroke-width="1.5">
+            <path d="M20 12 Q26 24 20 36" transform="rotate(-18 20 24)"/>
+            <path d="M20 12 Q26 24 20 36" transform="translate(27,-3) rotate(14 20 24)"/>
+            <path d="M20 12 Q26 24 20 36" transform="translate(1,13) scale(.8) rotate(-42 20 24)"/>
+          </g>
+        </svg>
+      </span></div>
+      <div class="diamond">◆</div>
+      <div class="drink-list">
         <div class="line"><span class="drink-name">Espresso scurt/lung</span><span class="leader"></span><span class="price">9 RON</span></div>
         <div class="line"><span class="drink-name">Espresso dublu</span><span class="leader"></span><span class="price">12 RON</span></div>
         <div class="line"><span class="drink-name">Cappuccino</span><span class="leader"></span><span class="price">13 RON</span></div>
         <div class="line"><span class="drink-name">Caffe latte</span><span class="leader"></span><span class="price">14 RON</span></div>
         <div class="line"><span class="drink-name">Iced latte</span><span class="leader"></span><span class="price">14 RON</span></div>
       </div>
-
-      <div class="subsec airy">
-        <div class="sec sm"><span class="ln"></span><h2>Racoritoare</h2><span class="ln"></span></div>
-        <div class="diamond">◆</div>
-        <div class="line"><span class="drink-name">Apa plata / minerala 330ml</span><span class="leader"></span><span class="price">10 RON</span></div>
-        <div class="line"><span class="drink-name">Apa plata / minerala 750ml</span><span class="leader"></span><span class="price">17 RON</span></div>
-        <div class="line"><span class="drink-name">Coca Cola / Cola Zero / 250ml</span><span class="leader"></span><span class="price">10 RON</span></div>
-        <div class="line"><span class="drink-name">Sprite / Fanta 250ml</span><span class="leader"></span><span class="price">10 RON</span></div>
-        <div class="line"><span class="drink-name">Fuzetea 500ml</span><span class="leader"></span><span class="price">11 RON</span></div>
-        <div class="line"><span class="drink-name">Schweppes 270ml</span><span class="leader"></span><span class="price">11 RON</span></div>
-        <div class="line"><span class="drink-name">Red bull / Burn 250ml</span><span class="leader"></span><span class="price">18 RON</span></div>
-      </div>
-
-      <div class="subsec">
-        <div class="sec sm"><span class="ln"></span><h2>Soft drinks</h2><span class="ln"></span></div>
-        <div class="line"><span class="drink-name">Socata artizanala 270ml</span><span class="leader"></span><span class="price">18 RON</span></div>
-        <div class="line"><span class="drink-name">Limonada clasica 250ml</span><span class="leader"></span><span class="price">23 RON</span></div>
-        <div class="line"><span class="drink-name">Limonada cu soc 250ml</span><span class="leader"></span><span class="price">23 RON</span></div>
-        <div class="line"><span class="drink-name">Limonada cu capsuni 250ml</span><span class="leader"></span><span class="price">23 RON</span></div>
-        <div class="line"><span class="drink-name">Limonada cu pepene rosu 250ml</span><span class="leader"></span><span class="price">23 RON</span></div>
-        <div class="line"><span class="drink-name">Limonada cu rodie 250ml</span><span class="leader"></span><span class="price">23 RON</span></div>
-        <div class="line"><span class="drink-name">Fresh portocale / grepfrut / mix 300ml</span><span class="leader"></span><span class="price">22 RON</span></div>
-      </div>
-      <div class="spacer"></div>
     </div>
 
-    <!-- coloana dreapta: Bere, Cocktails, Vin -->
-    <div class="col">
-      <div class="subsec">
-        <div class="sec sm icon-row"><span class="ln"></span><h2>Bere</h2><span class="icon">
-          <svg viewBox="0 0 64 54" width="56" height="47" aria-hidden="true">
-            <g fill="none" stroke="#C2912E" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-              <g transform="rotate(-18 20 32)">
-                <rect x="16" y="9" width="8" height="7" rx="1.4"/>
-                <path d="M17 16 h6 v5 q3 3 3 9 v13 q0 3 -3 3 h-9 q-3 0 -3 -3 v-13 q0 -6 3 -9 z"/>
-                <rect x="13" y="29" width="14" height="7"/>
-              </g>
-              <g transform="rotate(18 46 32)">
-                <rect x="42" y="9" width="8" height="7" rx="1.4"/>
-                <path d="M43 16 h6 v5 q3 3 3 9 v13 q0 3 -3 3 h-9 q-3 0 -3 -3 v-13 q0 -6 3 -9 z"/>
-                <rect x="39" y="29" width="14" height="7"/>
-              </g>
-              <path d="M27 7 l3 -6 M32 5.5 l0 -6.5 M37 7 l-3 -6" stroke-width="1.4"/>
+    <div class="subsec">
+      <div class="sec sm icon-row"><span class="ln"></span><h2>Bere</h2><span class="icon">
+        <svg viewBox="0 0 64 54" width="56" height="47" aria-hidden="true">
+          <g fill="none" stroke="#C2912E" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <g transform="rotate(-18 20 32)">
+              <rect x="16" y="9" width="8" height="7" rx="1.4"/>
+              <path d="M17 16 h6 v5 q3 3 3 9 v13 q0 3 -3 3 h-9 q-3 0 -3 -3 v-13 q0 -6 3 -9 z"/>
+              <rect x="13" y="29" width="14" height="7"/>
             </g>
-          </svg>
-        </span></div>
-        <div class="diamond">◆</div>
+            <g transform="rotate(18 46 32)">
+              <rect x="42" y="9" width="8" height="7" rx="1.4"/>
+              <path d="M43 16 h6 v5 q3 3 3 9 v13 q0 3 -3 3 h-9 q-3 0 -3 -3 v-13 q0 -6 3 -9 z"/>
+              <rect x="39" y="29" width="14" height="7"/>
+            </g>
+            <path d="M27 7 l3 -6 M32 5.5 l0 -6.5 M37 7 l-3 -6" stroke-width="1.4"/>
+          </g>
+        </svg>
+      </span></div>
+      <div class="diamond">◆</div>
+      <div class="drink-list">
         <div class="line"><span class="drink-name">Ursus Premium 330ml</span><span class="leader"></span><span class="price">11 RON</span></div>
         <div class="line"><span class="drink-name">Peroni Premium 330ml</span><span class="leader"></span><span class="price">11 RON</span></div>
         <div class="line"><span class="drink-name">Peroni Capri 330ml</span><span class="leader"></span><span class="price">12 RON</span></div>
@@ -606,26 +583,43 @@
         <div class="line"><span class="drink-name">Ursus fara alcool 330ml</span><span class="leader"></span><span class="price">12 RON</span></div>
         <div class="line"><span class="drink-name">Ursus Remix zmeura/soc 330ml</span><span class="leader"></span><span class="price">11 RON</span></div>
       </div>
+    </div>
 
-      <div class="subsec">
-        <div class="sec sm icon-row"><span class="ln"></span><h2>Cocktails</h2><span class="icon">
-          <svg viewBox="0 0 70 90" width="48" height="62" aria-hidden="true">
-            <g fill="none" stroke="#5B6E9E" stroke-width="1.4" stroke-linejoin="round" stroke-linecap="round">
-              <path d="M18 18 Q18 46 35 50 Q52 46 52 18"/>
-              <line x1="35" y1="50" x2="35" y2="76"/>
-              <path d="M23 80 Q35 84 47 80"/>
-              <line x1="18" y1="18" x2="52" y2="18"/>
-              <rect x="24" y="32" width="10" height="10" transform="rotate(12 29 37)"/>
-              <rect x="33" y="38" width="10" height="10" transform="rotate(-10 38 43)"/>
-              <path d="M20 18 Q17 4 14 -2" stroke-width="1.2"/>
-              <path d="M17 10 l-4 -2 M18 6 l-4 -1 M16 14 l-4 -1.5 M15 2 l-3.5 -1.5" stroke-width=".9"/>
-              <circle cx="50" cy="12" r="11"/>
-              <circle cx="50" cy="12" r="6.5"/>
-              <path d="M50 1 L50 23 M39 12 L61 12 M42 4 L58 20 M58 4 L42 20" stroke-width=".8"/>
-            </g>
-          </svg>
-        </span></div>
-        <div class="diamond">◆</div>
+    <!-- rand 2: Racoritoare / Cocktails -->
+    <div class="subsec">
+      <div class="sec sm"><span class="ln"></span><h2>Racoritoare</h2><span class="ln"></span></div>
+      <div class="diamond">◆</div>
+      <div class="drink-list">
+        <div class="line"><span class="drink-name">Apa plata / minerala 330ml</span><span class="leader"></span><span class="price">10 RON</span></div>
+        <div class="line"><span class="drink-name">Apa plata / minerala 750ml</span><span class="leader"></span><span class="price">17 RON</span></div>
+        <div class="line"><span class="drink-name">Coca Cola / Cola Zero / 250ml</span><span class="leader"></span><span class="price">10 RON</span></div>
+        <div class="line"><span class="drink-name">Sprite / Fanta 250ml</span><span class="leader"></span><span class="price">10 RON</span></div>
+        <div class="line"><span class="drink-name">Fuzetea 500ml</span><span class="leader"></span><span class="price">11 RON</span></div>
+        <div class="line"><span class="drink-name">Schweppes 270ml</span><span class="leader"></span><span class="price">11 RON</span></div>
+        <div class="line"><span class="drink-name">Red bull / Burn 250ml</span><span class="leader"></span><span class="price">18 RON</span></div>
+      </div>
+    </div>
+
+    <div class="subsec">
+      <div class="sec sm icon-row"><span class="ln"></span><h2>Cocktails</h2><span class="icon">
+        <svg viewBox="0 0 70 90" width="48" height="62" aria-hidden="true">
+          <g fill="none" stroke="#5B6E9E" stroke-width="1.4" stroke-linejoin="round" stroke-linecap="round">
+            <path d="M18 18 Q18 46 35 50 Q52 46 52 18"/>
+            <line x1="35" y1="50" x2="35" y2="76"/>
+            <path d="M23 80 Q35 84 47 80"/>
+            <line x1="18" y1="18" x2="52" y2="18"/>
+            <rect x="24" y="32" width="10" height="10" transform="rotate(12 29 37)"/>
+            <rect x="33" y="38" width="10" height="10" transform="rotate(-10 38 43)"/>
+            <path d="M20 18 Q17 4 14 -2" stroke-width="1.2"/>
+            <path d="M17 10 l-4 -2 M18 6 l-4 -1 M16 14 l-4 -1.5 M15 2 l-3.5 -1.5" stroke-width=".9"/>
+            <circle cx="50" cy="12" r="11"/>
+            <circle cx="50" cy="12" r="6.5"/>
+            <path d="M50 1 L50 23 M39 12 L61 12 M42 4 L58 20 M58 4 L42 20" stroke-width=".8"/>
+          </g>
+        </svg>
+      </span></div>
+      <div class="diamond">◆</div>
+      <div class="drink-list">
         <div class="item">
           <div class="item-row"><span class="cocktail-name">Aperol spritz</span><span class="leader"></span><span class="price">30 RON</span></div>
           <div class="desc">aperol, prosecco, gheata, apa minerala, portocala proaspata</div>
@@ -643,37 +637,54 @@
           <div class="desc">gin, lamaie/lime, apa tonica, gheata</div>
         </div>
       </div>
+    </div>
 
-      <div class="subsec">
-        <div class="sec sm icon-row"><span class="ln"></span><h2>Vin</h2><span class="icon">
-          <svg viewBox="0 0 64 66" width="46" height="47" aria-hidden="true">
-            <path d="M32 14 Q22 2 10 6 Q19 10 21 17" fill="none" stroke="#8a6a22" stroke-width="1.7" stroke-linecap="round"/>
-            <path d="M12 22 Q4 24 3 32 Q9 29 13 31" fill="none" stroke="#8a6a22" stroke-width="1.4" stroke-linecap="round"/>
-            <g fill="#C2912E" opacity=".9">
-              <circle cx="32" cy="17" r="6.4"/>
-              <circle cx="22" cy="25" r="6.4"/>
-              <circle cx="42" cy="25" r="6.4"/>
-              <circle cx="14" cy="35" r="6.4"/>
-              <circle cx="32" cy="35" r="6.4"/>
-              <circle cx="50" cy="35" r="6.4"/>
-              <circle cx="22" cy="45" r="6.4"/>
-              <circle cx="42" cy="45" r="6.4"/>
-              <circle cx="32" cy="54" r="6.4"/>
-            </g>
-            <g fill="#F3E3C7" opacity=".55">
-              <circle cx="30" cy="15" r="1.6"/>
-              <circle cx="20" cy="23" r="1.6"/>
-              <circle cx="40" cy="23" r="1.6"/>
-              <circle cx="12" cy="33" r="1.6"/>
-              <circle cx="30" cy="33" r="1.6"/>
-              <circle cx="48" cy="33" r="1.6"/>
-              <circle cx="20" cy="43" r="1.6"/>
-              <circle cx="40" cy="43" r="1.6"/>
-              <circle cx="30" cy="52" r="1.6"/>
-            </g>
-          </svg>
-        </span></div>
-        <div class="diamond">◆</div>
+    <!-- rand 3: Soft Drinks / Vin -->
+    <div class="subsec">
+      <div class="sec sm"><span class="ln"></span><h2>Soft drinks</h2><span class="ln"></span></div>
+      <div class="diamond">◆</div>
+      <div class="drink-list">
+        <div class="line"><span class="drink-name">Socata artizanala 270ml</span><span class="leader"></span><span class="price">18 RON</span></div>
+        <div class="line"><span class="drink-name">Limonada clasica 250ml</span><span class="leader"></span><span class="price">23 RON</span></div>
+        <div class="line"><span class="drink-name">Limonada cu soc 250ml</span><span class="leader"></span><span class="price">23 RON</span></div>
+        <div class="line"><span class="drink-name">Limonada cu capsuni 250ml</span><span class="leader"></span><span class="price">23 RON</span></div>
+        <div class="line"><span class="drink-name">Limonada cu pepene rosu 250ml</span><span class="leader"></span><span class="price">23 RON</span></div>
+        <div class="line"><span class="drink-name">Limonada cu rodie 250ml</span><span class="leader"></span><span class="price">23 RON</span></div>
+        <div class="line"><span class="drink-name">Fresh portocale / grepfrut / mix 300ml</span><span class="leader"></span><span class="price">22 RON</span></div>
+      </div>
+    </div>
+
+    <div class="subsec">
+      <div class="sec sm icon-row"><span class="ln"></span><h2>Vin</h2><span class="icon">
+        <svg viewBox="0 0 64 66" width="46" height="47" aria-hidden="true">
+          <path d="M32 14 Q22 2 10 6 Q19 10 21 17" fill="none" stroke="#8a6a22" stroke-width="1.7" stroke-linecap="round"/>
+          <path d="M12 22 Q4 24 3 32 Q9 29 13 31" fill="none" stroke="#8a6a22" stroke-width="1.4" stroke-linecap="round"/>
+          <g fill="#C2912E" opacity=".9">
+            <circle cx="32" cy="17" r="6.4"/>
+            <circle cx="22" cy="25" r="6.4"/>
+            <circle cx="42" cy="25" r="6.4"/>
+            <circle cx="14" cy="35" r="6.4"/>
+            <circle cx="32" cy="35" r="6.4"/>
+            <circle cx="50" cy="35" r="6.4"/>
+            <circle cx="22" cy="45" r="6.4"/>
+            <circle cx="42" cy="45" r="6.4"/>
+            <circle cx="32" cy="54" r="6.4"/>
+          </g>
+          <g fill="#F3E3C7" opacity=".55">
+            <circle cx="30" cy="15" r="1.6"/>
+            <circle cx="20" cy="23" r="1.6"/>
+            <circle cx="40" cy="23" r="1.6"/>
+            <circle cx="12" cy="33" r="1.6"/>
+            <circle cx="30" cy="33" r="1.6"/>
+            <circle cx="48" cy="33" r="1.6"/>
+            <circle cx="20" cy="43" r="1.6"/>
+            <circle cx="40" cy="43" r="1.6"/>
+            <circle cx="30" cy="52" r="1.6"/>
+          </g>
+        </svg>
+      </span></div>
+      <div class="diamond">◆</div>
+      <div class="drink-list">
         <div class="line"><span class="drink-name">Vinul casei 200ml</span><span class="leader"></span><span class="price">14 RON</span></div>
         <div class="line"><span class="drink-name">Tectonic Rose 750ml</span><span class="leader"></span><span class="price">80 RON</span></div>
         <div class="line"><span class="drink-name">Tectonic Sauvignon Blanc 750ml</span><span class="leader"></span><span class="price">80 RON</span></div>
@@ -683,7 +694,6 @@
         <div class="line"><span class="drink-name">Bacanta Feteasca Neagra 750ml</span><span class="leader"></span><span class="price">125 RON</span></div>
         <div class="line"><span class="drink-name">Varancha Feteasca Regala 750ml</span><span class="leader"></span><span class="price">50 RON</span></div>
       </div>
-      <div class="spacer"></div>
     </div>
   </div>
 
